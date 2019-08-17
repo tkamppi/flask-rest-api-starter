@@ -1,0 +1,18 @@
+FROM python:3.7-alpine
+
+COPY src/requirements.txt /app/requirements.txt
+COPY src/requirements-test.txt /app/requirements-test.txt
+RUN apk update \
+    && apk add --no-cache --virtual .build-deps gcc musl-dev \
+    && pip install -r /app/requirements-test.txt \
+    && apk del .build-deps
+
+COPY src/ /app/
+
+EXPOSE 5000
+
+WORKDIR /app
+USER 1001
+ENV COVERAGE_FILE=/tmp/.coverage
+RUN coverage run --source=./{{cookiecutter.app_name}} -m unittest discover -v -s ./tests/
+RUN coverage report -m
