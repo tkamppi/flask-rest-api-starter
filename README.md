@@ -35,7 +35,7 @@ docker build -f Dockerfile.test -t your-preferred-test-imagename .
 
 ### Run your application
 The gunicorn web-server inside the container listens to port 5000 by default.
-Build the docker image and run it forwarding port your local port 5000 to port 5000 inside the container.
+Build the docker image and run it forwarding your local port 5000 to port 5000 inside the container.
 ```
 docker build -f Dockerfile -t your-app .
 docker run -d -p 5000:5000 your-app 
