@@ -5,8 +5,8 @@ from flask import Response
 
 from {{cookiecutter.app_name}}.apiflask import ApiFlask, ApiResult, ApiException
 
-class TestApiFlask(unittest.TestCase):
 
+class TestApiFlask(unittest.TestCase):
     def test_apiflask_response_with_apiresult(self):
         response = ApiFlask(__name__).make_response(ApiResult({"key1": "value1"}))
         json_response = json.loads(response.get_data())
@@ -29,4 +29,4 @@ class TestApiFlask(unittest.TestCase):
         app = ApiFlask(__name__)
         with app.test_request_context():
             response = app.make_response("any response")
-            self.assertTrue(response.mimetype, "text/html") #defaults to text/html
+            self.assertTrue(response.mimetype, "text/html")  # defaults to text/html
