@@ -1,4 +1,4 @@
-Flask
-Flask-JWT-Extended
-gunicorn
-gevent
+Flask==1.1.1
+Flask-JWT-Extended==3.23.0
+gunicorn==19.9.0
+gevent==1.4.0
